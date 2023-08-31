@@ -10,52 +10,52 @@
         <table border="1">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Sandwich</th>
-                    <th>Roll</th>
-                    <th>Wrap</th>
-                    <th>Beef</th>
-                    <th>Chicken</th>
-                    <th>Pork</th>
-                    <th>Veg Pattie</th>
-                    <th>Lettuce</th>
-                    <th>Tomato</th>
-                    <th>Onion</th>
-                    <th>Carrot</th>
-                    <th>Beetroot</th>
-                    <th>Mayo</th>
-                    <th>BBQ</th>
-                    <th>Tomato Sauce</th>
-                    <th>Aioli</th>
-                    <th>Prices</th>
+                    <!-- ... column headers ... -->
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-    <td><input type="text" name="name_0" placeholder="Enter Name"></td>
-    <td><input type="checkbox" name="sandwich_0"></td>
-    <td><input type="checkbox" name="roll_0"></td>
-    <td><input type="checkbox" name="wrap_0"></td>
-    <td><input type="checkbox" name="beef_0"></td>
-    <td><input type="checkbox" name="chicken_0"></td>
-    <td><input type="checkbox" name="pork_0"></td>
-    <td><input type="checkbox" name="veg_pattie_0"></td>
-    <td><input type="checkbox" name="lettuce_0"></td>
-    <td><input type="checkbox" name="tomato_0"></td>
-    <td><input type="checkbox" name="onion_0"></td>
-    <td><input type="checkbox" name="carrot_0"></td>
-    <td><input type="checkbox" name="beetroot_0"></td>
-    <td><input type="checkbox" name="mayo_0"></td>
-    <td><input type="checkbox" name="bbq_0"></td>
-    <td><input type="checkbox" name="tomato_sauce_0"></td>
-    <td><input type="checkbox" name="aioli_0"></td>
-    <td><input type="text" name="price_0" placeholder="Enter Price"></td>
-</tr>
-
-
+            <tbody id="tableBody">
+                <!-- Rows will be generated here using JavaScript -->
             </tbody>
         </table>
         <input type="submit" value="Submit">
     </form>
+
+    <script>
+        const tbody = document.getElementById('tableBody');
+
+        for (let i = 0; i < 15; i++) {
+            const row = document.createElement('tr');
+
+            const nameCell = document.createElement('td');
+            const nameInput = document.createElement('input');
+            nameInput.type = 'text';
+            nameInput.name = 'name_' + i;
+            nameInput.placeholder = 'Enter Name';
+            nameCell.appendChild(nameInput);
+            row.appendChild(nameCell);
+
+            // List of columns that are checkboxes
+            const checkboxColumns = ['sandwich', 'roll', 'wrap', 'beef', 'chicken', 'pork', 'veg_pattie', 'lettuce', 'tomato', 'onion', 'carrot', 'beetroot', 'mayo', 'bbq', 'tomato_sauce', 'aioli'];
+            checkboxColumns.forEach(col => {
+                const cell = document.createElement('td');
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.name = col + '_' + i;
+                cell.appendChild(checkbox);
+                row.appendChild(cell);
+            });
+
+            const priceCell = document.createElement('td');
+            const priceInput = document.createElement('input');
+            priceInput.type = 'text';
+            priceInput.name = 'price_' + i;
+            priceInput.placeholder = 'Enter Price';
+            priceCell.appendChild(priceInput);
+            row.appendChild(priceCell);
+
+            tbody.appendChild(row);
+        }
+    </script>
 </body>
 </html>
+
